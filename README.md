@@ -8,11 +8,11 @@ Para utilizar, basta abrir o arquivo ``estilo_inpe_beamer.tex`` e adicionar os f
 
 ## Compilação
 
-  xelatex estilo_inpe_beamer.tex
+    xelatex estilo_inpe_beamer.tex
 
 Se forem adicionadas referências bibliográficas com ``bibtex``, compile o documento da seguinte forma:
 
-  xelatex estilo_inpe_beamer.tex
-  bibtex estilo_inpe_beamer
-  xelatex estilo_inpe_beamer.tex
-  xelatex estilo_inpe_beamer.tex
+    xelatex estilo_inpe_beamer.tex
+    bibtex estilo_inpe_beamer
+    xelatex estilo_inpe_beamer.tex
+    xelatex estilo_inpe_beamer.tex

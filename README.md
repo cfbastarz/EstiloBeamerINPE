@@ -16,3 +16,5 @@ Se forem adicionadas referências bibliográficas com ``bibtex``, compile o docu
     bibtex estilo_inpe_beamer
     xelatex estilo_inpe_beamer.tex
     xelatex estilo_inpe_beamer.tex
+
+Carlos Frederico Bastarz (carlos.bastarz@inpe.br)

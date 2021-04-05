@@ -4,13 +4,17 @@
 \usetheme{default}
 
 % Carregamento dos pacotes utilizados
-
 \usepackage[brazilian]{babel}
 %\usepackage[brazilian]{babel} % usar este pacote se a apresentação for em inglês
 \usepackage{times}
 \usepackage[T1]{fontenc}
 \usepackage{lipsum}
 \usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[alf]{abntex2cite}
+\usepackage{bibentry}
 
 % Definição do estilo das fontes
 \usefonttheme{professionalfonts} % using non standard fonts for beamer
@@ -113,8 +117,8 @@
     {\par\usebeamertemplate{block end}\end{actionenv}}
 
 % Informações da capa da apresentação
-\title{Nome Muito Comprido da Minha Apresentação Muito Comprida}
-\author{Nome Muito Comprido do Autor Muito Comprido}
+\title{Exemplo de Apresentação para o INPE utilizando o pacote Beamer do \LaTeX}
+\author{Carlos Frederico Bastarz}
 \institute{Instituto Nacional de Pesquisas Espaciais}
 \date{\today}
 
@@ -138,27 +142,153 @@
 	\tableofcontents
 \end{frame}
 
-
-\section{Seção1}
-\subsection{Subseção}
-\subsection{Subseção}
-\subsection{Subseção}
-\section{Seção2}
-\section{Seção3}
-\subsection{Subseção}
-\subsection{Subseção}
-\subsection{Subseção}
+\section{Apresentação}
 
 \begin{frame}
-\frametitle{Title}
-\framesubtitle{Subtitle}
-\begin{problock1}{Comando {\tt pause}:}
-O Comando {\tt pause} pode ser utilizado antes de tabelas,
-blocos, equações, listas, figuras etc. Mais um
-exemplo:
+\frametitle{Apresentação}
+\framesubtitle{Por que este exemplo?}
+\begin{itemize}
+	\item Neste arquivo, você encontrará exemplos para a maioria das suas necessidades com o Beamer;
+	\pause
+	\item Verifique os slides a seguir e depois olhe o arquivo {\tt estilo\_inpe\_beamer.tex} para ver como o frame com a estrutura que você precisa foi montado.
+	\pause
+	\item Os exemplos são mostrados para blocos de textos, imagens, tabelas, equações e referencias bibliográficas.
+\end{itemize}
+\end{frame}
+
+\section{Inserção de Texto}
+
+\subsection{Texto Comum}
+
+\begin{frame}
+\frametitle{Inserção de Texto}
+\framesubtitle{Texto Comum}
+\begin{itemize}
+	\item Neste frame, o texto está inserido diretamente, sem a utilização de blocos.
+	\pause
+	\item Após a utilização do comando {\tt pause}, pode-se adicionar mais conteúdo em um segundo frame, mas utilizando a mesma estrutura do frame atual.
+\end{itemize}
+\end{frame}
+
+\subsection{Texto em Blocos Comuns}
+
+\begin{frame}
+\frametitle{Inserção de Texto}
+\framesubtitle{Texto em Blocos Comuns}
+Esta frase está escrita fora de um bloco, diretamente no frame.
+\begin{block}{Frase em um bloco}
+	Esta frase está escrita dentro de um bloco comum. Compara o seu efeito com a frase escrita fora do bloco.
+\end{block}
+\end{frame}
+
+\subsection{Texto em Blocos Especiais}
+
+\begin{frame}
+\frametitle{Inserção de Texto}
+\framesubtitle{Texto em Blocos Especiais}
+Blocos podem ser utilizados para destacar o que está sendo apresentado.
+\begin{block}{Um bloco comum}
+	Esta frase está escrita dentro de um bloco comum.
+\end{block}
+\pause
+\begin{exampleblock}{Um bloco de exemplo}
+	Este é um bloco de exemplo: $ax^2 + bx + c = 0$, representa a forma geral de uma equação do segundo grau.
+\end{exampleblock}
+\pause
+\begin{alertblock}{Um bloco de alerta}
+	Este é um bloco de alerta.
+\end{alertblock}
+\end{frame}
+
+\subsection{Texto em Blocos Customizados}
+
+\begin{frame}
+\frametitle{Inserção de Texto}
+\framesubtitle{Texto em Blocos Customizados}
+Para este estilo, foram customizados dois blocos:
+\begin{problock1}{Bloco {\tt problock1}:}
+Este é o {\tt problock1}. Ele possui moldura colorida, fonte azul e fundo branco.
+\end{problock1}
 
 \pause
 
+\begin{problock2}{Bloco {\tt problock2}:}
+Este é o {\tt problock2}. Ele possui moldura colorida, fonte laranja e fundo branco.
+\end{problock2}
+
+\pause
+
+É possível adicionar novos blocos com cores personalizadas.
+\end{frame}
+
+\section{Inserção de Figuras e Tabelas}
+
+\subsection{Figura simples}
+
+\begin{frame}
+\frametitle{Uma figura}
+\framesubtitle{Figura e texto}
+Neste frame, é mostrado um exemplo de texto e figura.
+\pause
+\begin{figure}
+	\centering
+	\includegraphics[width=0.45\textwidth]{example-image-a}
+	\caption{Uma figura exemplo.}
+\end{figure}
+\end{frame}
+
+\subsection{Figuras lado a lado}
+
+\begin{frame}
+\frametitle{Painel de figura}
+\framesubtitle{Figura e texto}
+Neste frame, é mostrado um exemplo de texto e um painel de figuras.
+\pause
+\begin{figure}[H]
+    \begin{center}
+        \subfigure[Figura ``A'']{\includegraphics[width=0.25\textwidth]{example-image}}
+        \subfigure[Figura ``B'']{\includegraphics[width=0.25\textwidth]{example-image}}
+        \subfigure[Figura ``C'']{\includegraphics[width=0.25\textwidth]{example-image}}
+        \subfigure[Figura ``D'']{\includegraphics[width=0.25\textwidth]{example-image}}
+        \subfigure[Figura ``E'']{\includegraphics[width=0.25\textwidth]{example-image}}
+        \subfigure[Figura ``F'']{\includegraphics[width=0.25\textwidth]{example-image}}
+        \caption{Um painel de figuras lado a lado.}
+    \end{center}
+\end{figure}
+\end{frame}
+
+\subsection{Tabelas Simples}
+
+\begin{frame}
+\frametitle{Inserção e Tabelas}
+\framesubtitle{Tabela com Largura Fixa}
+\begin{table}
+\caption{Uma tabela com o ambiente {\tt tabularx} e o pacote {\tt booktabs}.}	
+\begin{tabularx}{\textwidth}{X X X}
+\toprule
+\textbf{COLUNA 1} & \textbf{COLUNA 2} & \textbf{COLUNA 3} \\
+\midrule
+L1C1 L1C1 L1C1 L1C1 & L1C2 L1C2 L1C2 L1C2 L1C2 L1C2 & L1C3      \\
+L2C1 L2C1 L2C1 L2C1 & L2C2 L2C2 L2C2 L2C2 L2C2 L2C2 & L2C3 L2C3 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\end{frame}
+
+\section{Inserção de Equações}
+
+\begin{frame}
+\frametitle{Inserção de Equações}
+\framesubtitle{Equações alinhadas}
+\begin{block}{Um bloco de equações com o ambiente {\tt align}:}
+\begin{align*}
+x & = 1 + 2y + 3z \\
+3x - y + 2z & = 0 \\
+2x + y & = 2 - z
+\end{align*}
+\end{block}
+\pause
+\begin{problock1}{Um bloco de equações com o ambiente {\tt align}:}
 \begin{align}
 x & = 1 + 2y + 3z \\
 3x - y + 2z & = 0 \\
@@ -167,44 +297,21 @@ x & = 1 + 2y + 3z \\
 \end{problock1}
 \end{frame}
 
+\section{Inserção de Referências Bibliográficas}
+
 \begin{frame}
-\frametitle{Title}
-\framesubtitle{Subtitle}
-\begin{block}{Observation 1}
-Simmons Hall is composed of metal and concrete.
-\end{block}
-\begin{exampleblock}{Observation 2}
-Simmons Dormitory is composed of brick.
-\end{exampleblock}
-\begin{alertblock}{Conclusion}
-Simmons Hall $\not=$ Simmons Dormitory.
-\end{alertblock}
-
-\begin{problock1}
-gfgfgh
-\end{problock1}	
-
-\begin{problock2}
-gfgfgh
-\end{problock2}	
+\frametitle{Referências Bibliográficas}
+\framesubtitle{Como Citar}
+\begin{itemize}
+	\item Segundo \citeonline{ciclanoetal/1975,fulano/1964}, a ciência é comunicada e registrada através de artigos, relatórios, apresentações etc. 
+	\item A ciência é comunicada e registrada através de artigos, relatórios, apresentações etc \cite{ciclanoetal/1975,fulano/1964}.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Title}
-\framesubtitle{Subtitle}
-\lipsum[1]
-\end{frame}
-
-\begin{frame}
-\frametitle{Title}
-\framesubtitle{Subtitle}
-\lipsum[1]
-\end{frame}
-
-\begin{frame}
-\frametitle{Title}
-\framesubtitle{Subtitle}
-\lipsum[1]
+\frametitle{Referências Bibliográficas}
+%\framesubtitle{Lista de Referências}
+\bibliography{referencias}
 \end{frame}
 
 % Frame Final (NÃO MODIFICAR)

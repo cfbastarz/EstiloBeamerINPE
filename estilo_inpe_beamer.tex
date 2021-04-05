@@ -1,0 +1,223 @@
+\documentclass[10pt]{beamer}
+
+% Tema padrão
+\usetheme{default}
+
+% Carregamento dos pacotes utilizados
+
+\usepackage[brazilian]{babel}
+%\usepackage[brazilian]{babel} % usar este pacote se a apresentação for em inglês
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{graphicx}
+
+% Definição do estilo das fontes
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+\usepackage{fontspec}
+\setmainfont{Liberation Sans}
+
+% Imagem de fundo dos frames
+\usebackgroundtemplate%
+{%
+	\includegraphics[width=\paperwidth,height=\paperheight]{fundo_slide_inpe.png}%
+}
+
+% Remove a barra de navegação dos frames
+\beamertemplatenavigationsymbolsempty
+
+% Rodapé dos frames
+\makeatother
+\setbeamertemplate{footline}
+{
+	\leavevmode%
+	\hbox{%
+	\begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+		\hspace*{10ex}\usebeamerfont{author in head/foot}\insertshortauthor
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.65\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
+		\usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+		\insertframenumber{} / \inserttotalframenumber\hspace*{3ex}
+	\end{beamercolorbox}}%
+	\vskip4pt%
+}
+\makeatletter
+
+% Definição das cores do tema
+\definecolor{azulinpe}{RGB}{0, 110, 175}
+\definecolor{laranjainpe}{RGB}{248, 133, 31}
+
+\setbeamercolor{title}{fg=azulinpe}
+\setbeamercolor{frametitle}{fg=azulinpe, bg=laranjainpe}
+
+\setbeamercolor{palette primary}{fg=azulinpe}
+\setbeamercolor{palette secondary}{fg=azulinpe}
+\setbeamercolor{palette tertiary}{fg=azulinpe}
+\setbeamercolor{palette quaternary}{fg=azulinpe}
+
+\setbeamercolor{structure}{fg=azulinpe} % itemize, enumerate, etc
+\setbeamercolor{section in toc}{fg=azulinpe} % TOC sections
+
+% Títulos dos frames
+\makeatletter
+\defbeamertemplate*{frametitle}{mydefault}[1][left]
+{
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \hspace{0.8cm}
+  \includegraphics[scale=0.75]{barra_secao.png}
+  \hspace{-0.5cm}
+  \pgfsetfillopacity{0}
+  \begin{beamercolorbox}[sep=0.3cm,#1,wd=0.64\textwidth]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1ex%
+    \if@tempswa\else\csname beamer@fte#1\endcsname\fi%
+    \strut\pgfsetfillopacity{1}\insertframetitle\strut\par%
+    {%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+  \end{beamercolorbox}%
+}
+\makeatother
+
+% Blocos customizados
+\newenvironment<>{problock1}[1]{%
+  \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{block title}{fg=laranjainpe, bg=azulinpe}
+       \setbeamercolor{block body}{fg=azulinpe, bg=white}
+       \setbeamercolor{itemize item}{fg=laranjainpe}
+       \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}}
+    {\par\usebeamertemplate{block end}\end{actionenv}}
+
+\newenvironment<>{problock2}[1]{%
+  \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{block title}{fg=azulinpe, bg=laranjainpe}
+       \setbeamercolor{block body}{fg=laranjainpe, bg=white}
+       \setbeamercolor{itemize item}{fg=azulinpe}
+       \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}}
+    {\par\usebeamertemplate{block end}\end{actionenv}}
+
+% Informações da capa da apresentação
+\title{Nome Muito Comprido da Minha Apresentação Muito Comprida}
+\author{Nome Muito Comprido do Autor Muito Comprido}
+\institute{Instituto Nacional de Pesquisas Espaciais}
+\date{\today}
+
+% A partir daqui inicia-se o documento
+\begin{document}
+
+% Capa (NÃO MODIFICAR)
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+	\vspace{1cm}
+	\titlepage
+\end{frame}
+}
+ 
+% Reinício do contador dos frames 
+\addtocounter{framenumber}{-1}
+ 
+% Sumário 
+\begin{frame}{Sumário}
+	\tableofcontents
+\end{frame}
+
+
+\section{Seção1}
+\subsection{Subseção}
+\subsection{Subseção}
+\subsection{Subseção}
+\section{Seção2}
+\section{Seção3}
+\subsection{Subseção}
+\subsection{Subseção}
+\subsection{Subseção}
+
+\begin{frame}
+\frametitle{Title}
+\framesubtitle{Subtitle}
+\begin{problock1}{Comando {\tt pause}:}
+O Comando {\tt pause} pode ser utilizado antes de tabelas,
+blocos, equações, listas, figuras etc. Mais um
+exemplo:
+
+\pause
+
+\begin{align}
+x & = 1 + 2y + 3z \\
+3x - y + 2z & = 0 \\
+2x + y & = 2 - z
+\end{align}
+\end{problock1}
+\end{frame}
+
+\begin{frame}
+\frametitle{Title}
+\framesubtitle{Subtitle}
+\begin{block}{Observation 1}
+Simmons Hall is composed of metal and concrete.
+\end{block}
+\begin{exampleblock}{Observation 2}
+Simmons Dormitory is composed of brick.
+\end{exampleblock}
+\begin{alertblock}{Conclusion}
+Simmons Hall $\not=$ Simmons Dormitory.
+\end{alertblock}
+
+\begin{problock1}
+gfgfgh
+\end{problock1}	
+
+\begin{problock2}
+gfgfgh
+\end{problock2}	
+\end{frame}
+
+\begin{frame}
+\frametitle{Title}
+\framesubtitle{Subtitle}
+\lipsum[1]
+\end{frame}
+
+\begin{frame}
+\frametitle{Title}
+\framesubtitle{Subtitle}
+\lipsum[1]
+\end{frame}
+
+\begin{frame}
+\frametitle{Title}
+\framesubtitle{Subtitle}
+\lipsum[1]
+\end{frame}
+
+% Frame Final (NÃO MODIFICAR)
+\usebackgroundtemplate%
+{%
+	\includegraphics[width=\paperwidth,height=\paperheight]{fundo_slide_inpe_final.png}%
+}
+
+\begingroup
+\setbeamertemplate{footline}{}
+\begin{frame}
+
+\end{frame}
+\endgroup
+
+\end{document}

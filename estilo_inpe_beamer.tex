@@ -1,22 +1,28 @@
+% Instituto Nacional de Pesquisas Espaciais - INPE
+% carlos.bastarz@inpe.br (15/04/2021)
+
 \documentclass[10pt]{beamer}
 
-% Tema padrão
+% Tema padrão (base)
 \usetheme{default}
 
 % Carregamento dos pacotes utilizados
-\usepackage[brazilian]{babel}
-%\usepackage[brazilian]{babel} % usar este pacote se a apresentação for em inglês
+\usepackage[brazilian]{babel} % comentar este pacote se a apresentação for em inglês
 \usepackage{times}
-\usepackage[T1]{fontenc}
-\usepackage{lipsum}
+
+%\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
 \usepackage{graphicx}
 \usepackage{subfigure}
+
 \usepackage{tabularx}
 \usepackage{booktabs}
+
 \usepackage[alf]{abntex2cite}
 \usepackage{bibentry}
 
-% Definição do estilo das fontes
+% Definiçãoo do estilo das fontes
 \usefonttheme{professionalfonts} % using non standard fonts for beamer
 \usefonttheme{serif} % default family is serif
 \usepackage{fontspec}
@@ -27,6 +33,9 @@
 {%
 	\includegraphics[width=\paperwidth,height=\paperheight]{fundo_slide_inpe.png}%
 }
+
+% Selo de 60 anos do INPE (comentar a linha abaixo caso não queira utilizar)
+\titlegraphic{\includegraphics[scale=0.15]{60Anosfinal.png}\vspace*{-50pt}}
 
 % Remove a barra de navegação dos frames
 \beamertemplatenavigationsymbolsempty
@@ -47,6 +56,10 @@
 	\vskip4pt%
 }
 \makeatletter
+
+% Insere o TOC com números (seções e subseções)
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
 
 % Definição das cores do tema
 \definecolor{azulinpe}{RGB}{0, 110, 175}
@@ -72,7 +85,7 @@
   \advance\@tempdima by\beamer@leftmargin%
   \advance\@tempdima by\beamer@rightmargin%
   \hspace{0.8cm}
-  \includegraphics[scale=0.75]{barra_secao.png}
+  %\includegraphics[scale=0.75]{barra_secao.png}
   \hspace{-0.5cm}
   \pgfsetfillopacity{0}
   \begin{beamercolorbox}[sep=0.3cm,#1,wd=0.64\textwidth]{frametitle}
@@ -118,9 +131,11 @@
 
 % Informações da capa da apresentação
 \title{Exemplo de Apresentação para o INPE utilizando o pacote Beamer do \LaTeX}
-\author{Carlos Frederico Bastarz}
+\author{Nome do Apresentador}
 \institute{Instituto Nacional de Pesquisas Espaciais}
-\date{\today}
+\date{
+	\today 
+}
 
 % A partir daqui inicia-se o documento
 \begin{document}
@@ -134,10 +149,10 @@
 \end{frame}
 }
  
-% Reinício do contador dos frames 
+% Reinicia do contador dos frames 
 \addtocounter{framenumber}{-1}
  
-% Sumário 
+% Sumário
 \begin{frame}{Sumário}
 	\tableofcontents
 \end{frame}
@@ -150,7 +165,7 @@
 \begin{itemize}
 	\item Neste arquivo, você encontrará exemplos para a maioria das suas necessidades com o Beamer;
 	\pause
-	\item Verifique os slides a seguir e depois olhe o arquivo {\tt estilo\_inpe\_beamer.tex} para ver como o frame com a estrutura que você precisa foi montado.
+	\item Verifique os slides a seguir e depois olhe o arquivo {\tt estilo\_inpe\_beamer.tex} para ver como o \textit{frame} com a estrutura que você precisa foi montado.
 	\pause
 	\item Os exemplos são mostrados para blocos de textos, imagens, tabelas, equações e referencias bibliográficas.
 \end{itemize}
@@ -164,9 +179,9 @@
 \frametitle{Inserção de Texto}
 \framesubtitle{Texto Comum}
 \begin{itemize}
-	\item Neste frame, o texto está inserido diretamente, sem a utilização de blocos.
+	\item Neste \textit{frame}, o texto está inserido diretamente, sem a utilização de blocos.
 	\pause
-	\item Após a utilização do comando {\tt pause}, pode-se adicionar mais conteúdo em um segundo frame, mas utilizando a mesma estrutura do frame atual.
+	\item Após a utilização do comando {\tt pause}, pode-se adicionar mais conteúdo em um segundo \textit{frame}, mas utilizando a mesma estrutura do \textit{frame} atual.
 \end{itemize}
 \end{frame}
 
@@ -175,7 +190,7 @@
 \begin{frame}
 \frametitle{Inserção de Texto}
 \framesubtitle{Texto em Blocos Comuns}
-Esta frase está escrita fora de um bloco, diretamente no frame.
+Esta frase está escrita fora de um bloco, diretamente no \textit{frame}.
 \begin{block}{Frase em um bloco}
 	Esta frase está escrita dentro de um bloco comum. Compara o seu efeito com a frase escrita fora do bloco.
 \end{block}
@@ -228,7 +243,7 @@ Este é o {\tt problock2}. Ele possui moldura colorida, fonte laranja e fundo br
 \begin{frame}
 \frametitle{Uma figura}
 \framesubtitle{Figura e texto}
-Neste frame, é mostrado um exemplo de texto e figura.
+Neste \textit{frame}, é mostrado um exemplo de texto e figura.
 \pause
 \begin{figure}
 	\centering
@@ -242,7 +257,7 @@ Neste frame, é mostrado um exemplo de texto e figura.
 \begin{frame}
 \frametitle{Painel de figura}
 \framesubtitle{Figura e texto}
-Neste frame, é mostrado um exemplo de texto e um painel de figuras.
+Neste \textit{frame}, é mostrado um exemplo de texto e um painel de figuras.
 \pause
 \begin{figure}[H]
     \begin{center}
@@ -310,7 +325,7 @@ x & = 1 + 2y + 3z \\
 
 \begin{frame}
 \frametitle{Referências Bibliográficas}
-%\framesubtitle{Lista de Referências}
+%\framesubtitle{Lista de ReferÃÂªncias}
 \bibliography{referencias}
 \end{frame}
 

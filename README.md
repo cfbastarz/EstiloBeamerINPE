@@ -17,4 +17,8 @@ Se forem adicionadas referências bibliográficas com ``bibtex``, compile o docu
     xelatex estilo_inpe_beamer.tex
     xelatex estilo_inpe_beamer.tex
 
+## Overleaf
+
+Um snapshot deste estilo do Beamer para as apresentações do INPE também pode ser encontrado no overleaf em https://www.overleaf.com/latex/templates/estilobeamerinpe/bbjshzqyfbjp
+
 Carlos Frederico Bastarz (carlos.bastarz@inpe.br)

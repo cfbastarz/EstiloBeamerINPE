@@ -1,0 +1,14 @@
+% Instituto Nacional de Pesquisas Espaciais - INPE
+% https://github.com/cfbastarz/EstiloBeamerINPE
+% V1.2.1
+% carlos.bastarz@inpe.br (03/11/2022)
+
+% Macro para a inserção do logo do INPE em todos os slides
+\newcommand{\unilogo}{
+  \setlength{\TPHorizModule}{1pt}
+  \setlength{\TPVertModule}{1pt}
+   % textblock{}{x,y}: pos(x) = leftUpperCorner + (x * \TPHorizModule), pos(y) = leftUpperCorner - (y * \TPVertModule)
+  \begin{textblock}{1}(25,2)
+    \includegraphics[width=45pt,height=45pt]{./img/Logomarca2020.png}
+  \end{textblock}
+  }

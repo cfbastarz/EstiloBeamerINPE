@@ -1,0 +1,122 @@
+% Instituto Nacional de Pesquisas Espaciais - INPE
+% https://github.com/cfbastarz/EstiloBeamerINPE
+% V1.2.1
+% carlos.bastarz@inpe.br (03/11/2022)
+
+% Definição do estilo das fontes
+% Nota: neste estilo, a fonte padrão não possui serifa (i.e., barra ou prolongamento que está presente no fim das hastes das letras) enquanto a fonte utilizada no modo matemático, sim
+\usefonttheme[onlymath]{serif}
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+\usepackage{fontspec}
+%\setmainfont{Liberation Sans}
+
+% Imagem de fundo dos frames
+\usebackgroundtemplate{%
+	\includegraphics[width=\paperwidth,height=\paperheight]{./img/fundo_slide_inpe_sem_logo.png}%
+	}
+
+% Selo de 60 anos do INPE (comentar a linha abaixo caso não queira utilizar)
+\titlegraphic{\includegraphics[scale=0.15]{./img/60Anosfinal.png}\vspace*{-50pt}}
+
+\logo{\unilogo}
+
+% Remove a barra de navegação dos frames
+\beamertemplatenavigationsymbolsempty
+
+% Rodapé dos frames
+\makeatother
+\setbeamertemplate{footline}
+{
+	\leavevmode%
+	\hbox{%
+	\begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+		\hspace*{13ex}\usebeamerfont{author in head/foot}\insertshortauthor
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.65\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
+		\usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+		\insertframenumber{} / \inserttotalframenumber\hspace*{3ex}
+	\end{beamercolorbox}}%
+	\vskip4pt%
+}
+\makeatletter
+
+% Insere o TOC com números (seções e subseções)
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+% Definição das cores do tema
+\definecolor{azulinpe}{RGB}{0, 110, 175}
+\definecolor{laranjainpe}{RGB}{248, 133, 31}
+\definecolor{verdeinpe}{RGB}{73, 119, 28}
+
+\setbeamercolor{title}{fg=azulinpe}
+\setbeamercolor{frametitle}{fg=azulinpe, bg=laranjainpe}
+
+\setbeamercolor{palette primary}{fg=azulinpe}
+\setbeamercolor{palette secondary}{fg=azulinpe}
+\setbeamercolor{palette tertiary}{fg=azulinpe}
+\setbeamercolor{palette quaternary}{fg=azulinpe}
+
+\setbeamercolor{structure}{fg=azulinpe} % itemize, enumerate, etc
+\setbeamercolor{section in toc}{fg=azulinpe} % TOC sections
+
+% Títulos dos frames
+\makeatletter
+\defbeamertemplate*{frametitle}{mydefault}[1][left]
+{
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \hspace{1.3cm}
+  %\includegraphics[scale=0.75]{./img/barra_secao.png}
+  \hspace{-0.5cm}
+  \pgfsetfillopacity{0}
+  \begin{beamercolorbox}[sep=0.3cm,#1,wd=0.64\textwidth]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1ex%
+    \if@tempswa\else\csname beamer@fte#1\endcsname\fi%
+    \strut\pgfsetfillopacity{1}\insertframetitle\strut\par%
+    {%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+  \end{beamercolorbox}%
+}
+\makeatother
+
+% Blocos customizados
+\newenvironment<>{problock1}[1]{%
+  \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{block title}{fg=laranjainpe, bg=azulinpe}
+      \setbeamercolor{block body}{fg=azulinpe, bg=white}
+      \setbeamercolor{itemize item}{fg=laranjainpe}
+      \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}}
+    {\par\usebeamertemplate{block end}\end{actionenv}}
+
+\newenvironment<>{problock2}[1]{%
+  \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{block title}{fg=azulinpe, bg=laranjainpe}
+      \setbeamercolor{block body}{fg=laranjainpe, bg=white}
+      \setbeamercolor{itemize item}{fg=azulinpe}
+      \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}}
+    {\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+\setbeamertemplate{caption}{\insertcaption} 
+
+\hypersetup{colorlinks,linkcolor=,citecolor=,urlcolor=azulinpe,backref=true}
+
+\newcommand{\nologo}{\setbeamertemplate{logo}{}}

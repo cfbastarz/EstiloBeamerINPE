@@ -8,8 +8,8 @@ Para utilizar, basta abrir o arquivo `estilo_inpe_beamer.tex` e adicionar os fra
 
 ## Exemplos de Uso
 
-* Apresentação "Matriz de Covariâncias dos Erros de Previsão (Matriz B)"[https://github.com/cfbastarz/WorkshopAD-DIMNT2022/blob/main/matriz_B-cfbastarz/matriz_B-cfbastarz.pdf];
-* Apresentação "Assimilação de dados Híbrida visando a Previsão por Conjunto"[https://github.com/cfbastarz/WorkshopAD-DIMNT2022/blob/main/ensemble-cfbastarz/ensemble-cfbastarz.pdf].
+* Apresentação ["Matriz de Covariâncias dos Erros de Previsão (Matriz B)"](https://github.com/cfbastarz/WorkshopAD-DIMNT2022/blob/main/matriz_B-cfbastarz/matriz_B-cfbastarz.pdf);
+* Apresentação ["Assimilação de dados Híbrida visando a Previsão por Conjunto"](https://github.com/cfbastarz/WorkshopAD-DIMNT2022/blob/main/ensemble-cfbastarz/ensemble-cfbastarz.pdf).
 
 ## Compilação
 

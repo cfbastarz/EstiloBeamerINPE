@@ -1,135 +1,29 @@
 % Instituto Nacional de Pesquisas Espaciais - INPE
 % https://github.com/cfbastarz/EstiloBeamerINPE
-% V1.2
-% carlos.bastarz@inpe.br (15/04/2021)
+% V1.2.1
+% carlos.bastarz@inpe.br (03/11/2022)
 
-\documentclass[10pt]{beamer}
+% Define a razão de aspecto do documento com a proporção 16:9 (widescreen)
+% e fonte com 10 pt
+% Nota: caso queira utilizar a proporção padrão (antiga), remova a opção
+% "aspectratio=169" e será necessário alterar a razão de aspecto da imagem de fundo
+% dos slides
+\documentclass[10pt,aspectratio=169]{beamer}
 
 % Tema padrão (base)
 \usetheme{default}
 
 % Carregamento dos pacotes utilizados
-\usepackage[brazilian]{babel} % comentar este pacote se a apresentação for em inglês
-\usepackage{times}
+\include{./estilo_inpe_beamer_pacotes}
 
-%\usepackage[utf8]{inputenc}
-\usepackage{fontspec}
+% Carregamento das macros utilizadas
+\include{./estilo_inpe_beamer_macros}
 
-\usepackage{graphicx}
-\usepackage{subfigure}
+% Mantenha este comando aqui
+\setbeamerfont{framesubtitle}{size=\large}
 
-\usepackage{tabularx}
-\usepackage{booktabs}
-
-\usepackage[alf]{abntex2cite}
-\usepackage{bibentry}
-
-% Definiçãoo do estilo das fontes
-\usefonttheme{professionalfonts} % using non standard fonts for beamer
-\usefonttheme{serif} % default family is serif
-\usepackage{fontspec}
-\setmainfont{Liberation Sans}
-
-% Imagem de fundo dos frames
-\usebackgroundtemplate%
-{%
-	\includegraphics[width=\paperwidth,height=\paperheight]{fundo_slide_inpe_2.png}%
-}
-
-% Selo de 60 anos do INPE (comentar a linha abaixo caso não queira utilizar)
-\titlegraphic{\includegraphics[scale=0.15]{60Anosfinal.png}\vspace*{-50pt}}
-
-% Remove a barra de navegação dos frames
-\beamertemplatenavigationsymbolsempty
-
-% Rodapé dos frames
-\makeatother
-\setbeamertemplate{footline}
-{
-	\leavevmode%
-	\hbox{%
-	\begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
-		\hspace*{10ex}\usebeamerfont{author in head/foot}\insertshortauthor
-	\end{beamercolorbox}%
-	\begin{beamercolorbox}[wd=.65\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
-		\usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
-		\insertframenumber{} / \inserttotalframenumber\hspace*{3ex}
-	\end{beamercolorbox}}%
-	\vskip4pt%
-}
-\makeatletter
-
-% Insere o TOC com números (seções e subseções)
-\setbeamertemplate{section in toc}[sections numbered]
-\setbeamertemplate{subsection in toc}[subsections numbered]
-
-% Definição das cores do tema
-\definecolor{azulinpe}{RGB}{0, 110, 175}
-\definecolor{laranjainpe}{RGB}{248, 133, 31}
-
-\setbeamercolor{title}{fg=azulinpe}
-\setbeamercolor{frametitle}{fg=azulinpe, bg=laranjainpe}
-
-\setbeamercolor{palette primary}{fg=azulinpe}
-\setbeamercolor{palette secondary}{fg=azulinpe}
-\setbeamercolor{palette tertiary}{fg=azulinpe}
-\setbeamercolor{palette quaternary}{fg=azulinpe}
-
-\setbeamercolor{structure}{fg=azulinpe} % itemize, enumerate, etc
-\setbeamercolor{section in toc}{fg=azulinpe} % TOC sections
-
-% Títulos dos frames
-\makeatletter
-\defbeamertemplate*{frametitle}{mydefault}[1][left]
-{
-  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
-  \@tempdima=\textwidth%
-  \advance\@tempdima by\beamer@leftmargin%
-  \advance\@tempdima by\beamer@rightmargin%
-  \hspace{0.8cm}
-  %\includegraphics[scale=0.75]{barra_secao.png}
-  \hspace{-0.5cm}
-  \pgfsetfillopacity{0}
-  \begin{beamercolorbox}[sep=0.3cm,#1,wd=0.64\textwidth]{frametitle}
-    \usebeamerfont{frametitle}%
-    \vbox{}\vskip-1ex%
-    \if@tempswa\else\csname beamer@fte#1\endcsname\fi%
-    \strut\pgfsetfillopacity{1}\insertframetitle\strut\par%
-    {%
-      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
-    }%
-    \vskip-1ex%
-    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
-  \end{beamercolorbox}%
-}
-\makeatother
-
-% Blocos customizados
-\newenvironment<>{problock1}[1]{%
-  \begin{actionenv}#2%
-      \def\insertblocktitle{#1}%
-      \par%
-      \mode<presentation>{%
-        \setbeamercolor{block title}{fg=laranjainpe, bg=azulinpe}
-       \setbeamercolor{block body}{fg=azulinpe, bg=white}
-       \setbeamercolor{itemize item}{fg=laranjainpe}
-       \setbeamertemplate{itemize item}[triangle]
-     }%
-      \usebeamertemplate{block begin}}
-    {\par\usebeamertemplate{block end}\end{actionenv}}
-
-\newenvironment<>{problock2}[1]{%
-  \begin{actionenv}#2%
-      \def\insertblocktitle{#1}%
-      \par%
-      \mode<presentation>{%
-        \setbeamercolor{block title}{fg=azulinpe, bg=laranjainpe}
-       \setbeamercolor{block body}{fg=laranjainpe, bg=white}
-       \setbeamercolor{itemize item}{fg=azulinpe}
-       \setbeamertemplate{itemize item}[triangle]
-     }%
-      \usebeamertemplate{block begin}}
-    {\par\usebeamertemplate{block end}\end{actionenv}}
+% Carregamento das definições do tema
+\include{./estilo_inpe_beamer_tema}
 
 % Informações da capa da apresentação
 \title{Exemplo de Apresentação para o INPE utilizando o pacote Beamer do \LaTeX}
@@ -154,10 +48,28 @@
 % Reinicia do contador dos frames 
 \addtocounter{framenumber}{-1}
  
-% Sumário
+% Sumário (1 coluna)
 \begin{frame}{Sumário}
 	\tableofcontents
 \end{frame}
+
+% Sumário (2 colunas)
+% Nota: observe que dentro de cada coluna, podem ser especificadas
+% quais seções serão apresentadas
+%\begin{frame}
+%\frametitle{Sumário}
+%\framesubtitle{\faListOl}
+%  \begin{textblock}{15}(1.5,4)
+%    \begin{columns}[t]
+%      \begin{column}{.5\textwidth}
+%        \large\tableofcontents[sections={1-3}]
+%      \end{column}
+%      \begin{column}{.5\textwidth}
+%        \large\tableofcontents[sections={4-6}]
+%      \end{column}
+%    \end{columns}
+%  \end{textblock}    
+%\end{frame}
 
 \section{Apresentação}
 
@@ -263,12 +175,12 @@ Neste \textit{frame}, é mostrado um exemplo de texto e um painel de figuras.
 \pause
 \begin{figure}[H]
     \begin{center}
-        \subfigure[Figura ``A'']{\includegraphics[width=0.25\textwidth]{example-image}}
-        \subfigure[Figura ``B'']{\includegraphics[width=0.25\textwidth]{example-image}}
-        \subfigure[Figura ``C'']{\includegraphics[width=0.25\textwidth]{example-image}}
-        \subfigure[Figura ``D'']{\includegraphics[width=0.25\textwidth]{example-image}}
-        \subfigure[Figura ``E'']{\includegraphics[width=0.25\textwidth]{example-image}}
-        \subfigure[Figura ``F'']{\includegraphics[width=0.25\textwidth]{example-image}}
+        \subfigure[Figura ``A'']{\includegraphics[width=0.175\textwidth]{example-image}}
+        \subfigure[Figura ``B'']{\includegraphics[width=0.175\textwidth]{example-image}}
+        \subfigure[Figura ``C'']{\includegraphics[width=0.175\textwidth]{example-image}} \\
+        \subfigure[Figura ``D'']{\includegraphics[width=0.175\textwidth]{example-image}}
+        \subfigure[Figura ``E'']{\includegraphics[width=0.175\textwidth]{example-image}}
+        \subfigure[Figura ``F'']{\includegraphics[width=0.175\textwidth]{example-image}}
         \caption{Um painel de figuras lado a lado.}
     \end{center}
 \end{figure}
@@ -305,6 +217,7 @@ x & = 1 + 2y + 3z \\
 \end{align*}
 \end{block}
 \pause
+\vspace{-1em}
 \begin{problock1}{Um bloco de equações com o ambiente {\tt align}:}
 \begin{align}
 x & = 1 + 2y + 3z \\
@@ -333,14 +246,21 @@ x & = 1 + 2y + 3z \\
 % Frame Final (NÃO MODIFICAR)
 \usebackgroundtemplate%
 {%
-	\includegraphics[width=\paperwidth,height=\paperheight]{fundo_slide_inpe_final_2.png}%
+  \includegraphics[width=\paperwidth,height=\paperheight]{./img/fundo_slide_inpe_sem_logo.png}%
 }
 
 \begingroup
 \setbeamertemplate{footline}{}
+{\nologo
 \begin{frame}
-
+  \begin{figure}[H]
+    \vspace{-4em}
+		\centering
+    \hspace*{1.5em}\includegraphics[width=1.\textwidth]{./img/DesinacaoNominativaCentralizada2020.pdf}
+  \end{figure}
 \end{frame}
+}
 \endgroup
+
 
 \end{document}
